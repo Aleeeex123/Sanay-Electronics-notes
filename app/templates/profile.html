@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Личный кабинет: {{ username }}</h2>
+
+<h3>Мои закладки</h3>
+{% if bookmarks %}
+    <ul>
+        {% for bm in bookmarks %}
+            <li>
+                <a href="/article/{{ bm[0] }}">{{ bm[1] }}</a>
+                [{{ bm[2] }}] — добавлено {{ bm[3] }}
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Пока нет сохранённых статей.</p>
+{% endif %}
+{% endblock %}

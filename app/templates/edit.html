@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Редактировать статью</h2>
+<form method="post">
+    <label>Заголовок:</label><br>
+    <input name="title" value="{{ article[1] }}" required><br>
+
+    <label>Раздел:</label><br>
+    <select name="section" required>
+        <option value="Теория" {% if article[3] == 'Теория' %}selected{% endif %}>Теория</option>
+        <option value="Детали" {% if article[3] == 'Детали' %}selected{% endif %}>Детали</option>
+        <option value="Проекты" {% if article[3] == 'Проекты' %}selected{% endif %}>Проекты</option>
+    </select><br>
+
+    <label>Текст (Markdown):</label><br>
+    <textarea name="content" rows="12" required>{{ article[2] }}</textarea><br>
+
+    <button type="submit">Сохранить</button>
+</form>
+{% endblock %}

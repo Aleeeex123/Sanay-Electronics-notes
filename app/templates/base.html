@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sanay Electronics</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>Sanay Electronics</h1>
+    <nav>
+        <a href="/">Главная</a> |
+        <a href="/section/Теория">Теория</a> |
+        <a href="/section/Детали">Детали</a> |
+        <a href="/section/Проекты">Проекты</a>
+        {% if session.get('user_id') %}
+        {% if session.get('is_admin') %}
+      | <a href="/create">Новая статья</a>
+        {% endif %}
+    |   <a href="/profile">Профиль ({{ session.get('username') }})</a>
+    |   <a href="/logout">Выйти</a>
+        {% else %}
+    |   <a href="/login">Войти</a>
+    |   <a href="/register">Регистрация</a>
+        {% endif %}
+    </nav>
+    <hr>
+    {% block content %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Новая статья</h2>
+<form method="post">
+    <label>Заголовок:</label><br>
+    <input name="title" required><br>
+
+    <label>Раздел:</label><br>
+    <select name="section" required>
+        <option value="Теория">Теория</option>
+        <option value="Детали">Детали</option>
+        <option value="Проекты">Проекты</option>
+    </select><br>
+
+    <label>Текст (Markdown):</label><br>
+    <textarea name="content" rows="12" required></textarea><br>
+    <small>
+        **жирный** *курсив* ## Заголовок<br>
+        ![Описание](/static/uploads/файл.jpg)
+    </small><br>
+
+    <button type="submit">Опубликовать</button>
+</form>
+{% endblock %}

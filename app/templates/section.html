@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Раздел: {{ section_name }}</h2>
+{% for article in articles %}
+    <div>
+        <h3><a href="/article/{{ article[0] }}">{{ article[1] }}</a></h3>
+        <p>{{ article[2][:200] }}...</p>
+        <small>{{ article[3] }}</small>
+        <hr>
+    </div>
+{% endfor %}
+{% endblock %}

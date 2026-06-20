@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>{{ article[1] }}</h2>
+<p>Раздел: <a href="/section/{{ article[3] }}">{{ article[3] }}</a></p>
+
+<div>{{ content_html | safe }}</div>
+
+<small>Опубликовано: {{ article[4] }}</small>
+
+{% if session.get('user_id') %}
+    <br>
+    <form method="post" action="/bookmark/{{ article[0] }}">
+        <button type="submit">
+            {% if bookmarked %}Убрать из закладок{% else %}В закладки{% endif %}
+        </button>
+    </form>
+    {% if session.get('is_admin') %}
+        <br>
+        <form method="get" action="/edit/{{ article[0] }}">
+            <button type="submit">Редактировать</button>
+        </form>
+    {% endif %}
+{% else %}
+    <p><em><a href="/login">Войдите</a>, чтобы добавлять в закладки.</em></p>
+{% endif %}
+{% endblock %}
